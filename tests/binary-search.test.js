@@ -12,7 +12,7 @@ describe('binary-search tree test', () => {
     expect(newTree.buildTree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])).toBeDefined();
   })
 
-  it('filters out duplicate values', () => {
-    expect(newTree.buildTree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])).toStrictEqual([1, 7, 4, 23, 8, 9, 3, 5, 67, 6345, 324]);
+  it('filters out duplicate values and sorts list', () => {
+    expect(newTree.buildTree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])).toStrictEqual([1, 3, 4, 5, 7, 8, 9, 23, 67, 324, 6345]);
   })
 })
