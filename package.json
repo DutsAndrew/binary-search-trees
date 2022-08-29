@@ -1,0 +1,25 @@
+{
+  "name": "binary-search-trees",
+  "version": "1.0.0",
+  "description": "",
+  "main": "binary-search.js",
+  "directories": {
+    "test": "jest"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DutsAndrew/binary-search-trees.git"
+  },
+  "author": "Andrew Dutson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DutsAndrew/binary-search-trees/issues"
+  },
+  "homepage": "https://github.com/DutsAndrew/binary-search-trees#readme",
+  "devDependencies": {
+    "jest": "^29.0.1"
+  }
+}
