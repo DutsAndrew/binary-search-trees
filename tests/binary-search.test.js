@@ -42,7 +42,6 @@ describe('binary-search tree test', () => {
   it('insert(value) inserts a new value into binary search tree', () => {
     const buildTree = newTree.buildTree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
     newTree.root = buildTree;
-    expect(newTree.insert(4)).toBe(4);
-    expect(newTree.root.value).toBe(8);
+    expect(newTree.insert(root = false, 4)).toBe(4);
   });
 })

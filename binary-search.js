@@ -11,9 +11,9 @@ class Tree {
     this.root = null;
   }
   buildTree(array) {
-    const filteredStatus = filteredArray(array);
-    const sortedStatus = mergeSort(filteredStatus);
-    const rootNode = createBST(sortedStatus, 0, sortedStatus.length - 1);
+    const filteredArr = filteredArray(array);
+    const sortedArr = mergeSort(filteredArr);
+    const rootNode = createBST(sortedArr, 0, sortedArr.length - 1);
     // const logOutBSTree = logBST(arrayToBinarySearchTree);
 
     function filteredArray(array) { 
@@ -86,8 +86,17 @@ class Tree {
 
     return rootNode;
   }
-  insert(value) {
-    return value;
+  insert(root, value) {
+    if (root === false) root = this.root;
+    if (root === null || root.value === value) {
+      return root.value;
+    }
+    
+    if (root.value < value) {
+      return this.insert(root.right, value);
+    }
+
+    return this.insert(root.left, value);
   }
 }
 
