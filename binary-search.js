@@ -12,9 +12,10 @@ class Tree {
   }
   buildTree(array) {
     const filteredStatus = filteredArray(array);
-    const mergedStatus = mergeSort(filteredStatus);
+    const sortedStatus = mergeSort(filteredStatus);
+    const arrayToBinarySearchTree = createBST(sortedStatus, 0, sortedStatus.length - 1);
+    const logOutBSTree = logBST(arrayToBinarySearchTree);
 
-    // removes duplicate values
     function filteredArray(array) { 
       const removedDuplicates = [];
 
@@ -27,12 +28,10 @@ class Tree {
       return removedDuplicates;
     }
 
-    // merge sort to sort array
     function mergeSort(array) {
       const sortedArray = [];
       if (array.length === 1) return array;
     
-      // divide
       const midPoint = Math.floor(array.length / 2);
       const arrayLeft = mergeSort(array.slice(0, midPoint));
       const arrayRight = mergeSort(array.slice(midPoint));
@@ -55,7 +54,37 @@ class Tree {
 
       return sortedArray;
     }
-    return mergedStatus;
+
+    function createBST(array, start, end) {
+      if (start > end) return null;
+
+      const midPoint = parseInt((start + end) / 2);
+      const node = new Node(array[midPoint]);
+
+      let rootNodeSet = false;
+      let rootNode = null;
+
+      if (rootNodeSet === false) {
+        rootNode = node;
+      }
+
+      node.left = createBST(array, start, midPoint - 1);
+      node.right = createBST(array, midPoint + 1, end);
+
+      return rootNode;
+    }
+    
+    function logBST(node) {
+      if (node == null)
+      {
+          return;
+      }
+      console.log(node.value + " ");
+      logBST(node.left);
+      logBST(node.right);
+    }
+
+    return arrayToBinarySearchTree;
   }
 }
 
