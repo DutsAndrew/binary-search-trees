@@ -13,8 +13,8 @@ class Tree {
   buildTree(array) {
     const filteredStatus = filteredArray(array);
     const sortedStatus = mergeSort(filteredStatus);
-    const arrayToBinarySearchTree = createBST(sortedStatus, 0, sortedStatus.length - 1);
-    const logOutBSTree = logBST(arrayToBinarySearchTree);
+    const rootNode = createBST(sortedStatus, 0, sortedStatus.length - 1);
+    // const logOutBSTree = logBST(arrayToBinarySearchTree);
 
     function filteredArray(array) { 
       const removedDuplicates = [];
@@ -74,21 +74,21 @@ class Tree {
       return rootNode;
     }
     
-    function logBST(node) {
-      if (node == null)
-      {
-          return;
-      }
-      console.log(node.value + " ");
-      logBST(node.left);
-      logBST(node.right);
-    }
+    // function logBST(node) {
+    //   if (node == null)
+    //   {
+    //       return;
+    //   }
+    //   console.log(node.value + " ");
+    //   logBST(node.left);
+    //   logBST(node.right);
+    // }
 
-    return arrayToBinarySearchTree;
+    return rootNode;
+  }
+  insert(value) {
+    return value;
   }
 }
-
-const newTree = new Tree();
-console.log(newTree.buildTree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]));
 
 module.exports = Tree;

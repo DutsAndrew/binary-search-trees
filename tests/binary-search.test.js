@@ -35,6 +35,14 @@ describe('binary-search tree test', () => {
     expect(root.right.right.right.value).toBe(6345);
     expect(root.right.right.right.left).toBe(null);
     expect(root.right.right.right.right).toBe(null);
-  })
+    newTree.root = root;
+    expect(newTree.root.value).toBe(8);
+  });
   
+  it('insert(value) inserts a new value into binary search tree', () => {
+    const buildTree = newTree.buildTree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
+    newTree.root = buildTree;
+    expect(newTree.insert(4)).toBe(4);
+    expect(newTree.root.value).toBe(8);
+  });
 })
