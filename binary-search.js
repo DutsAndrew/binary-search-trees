@@ -86,17 +86,43 @@ class Tree {
 
     return rootNode;
   }
-  insert(root, value) {
-    if (root === false) root = this.root;
-    if (root === null || root.value === value) {
-      return root.value;
-    }
-    
-    if (root.value < value) {
-      return this.insert(root.right, value);
+  insert(value) {
+    let previousRoot;
+    const currentRoot = this.root;
+    const searchStatus = searchTree(currentRoot, value);
+
+    function searchTree(root, value) {
+
+      // value is attached to BST when a null value is found
+      if (root === null) {
+        const newNode = new Node(value);
+        root = newNode;
+
+        if (value < previousRoot.value) {
+          previousRoot.left = root;
+          return root;
+        } else if (value > previousRoot.value) {
+          previousRoot.right = root;
+          return root;
+        }
+      }
+      
+      // return true if the value is already in the tree
+      if (root.value === value) {
+        return true;
+      }
+      
+      // tree traversal
+      if (value > root.value) {
+        previousRoot = root;
+        return searchTree(root.right, value);
+      } else if (value < root.value) {
+        previousRoot = root;
+        return searchTree(root.left, value);
+      }
     }
 
-    return this.insert(root.left, value);
+    return searchStatus;
   }
 }
 
