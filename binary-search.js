@@ -157,11 +157,31 @@ class Tree {
             previousRoot.left = root.left;
             return previousRoot.left;
           }
-          
+
         }
 
         // for when two children are present, find the inorder successor by traversing down the right branch and then continuing down the left branch until the smallest value is found
-        return root;
+        if (root.left !== null && root.right !== null) {
+          previousRoot = root.right;
+          const leftBranch = root.left;
+          const rightBranch = root.right;
+  
+          let parentOfDeletedNode;
+          while (previousRoot.left !== null) {
+            if (previousRoot.left.left === null) {
+              parentOfDeletedNode = previousRoot;
+            }
+            previousRoot = previousRoot.left;
+          }
+
+          // re-attaching branches after deletion
+          root = previousRoot;
+          root.left = leftBranch;
+          root.right = rightBranch;
+          parentOfDeletedNode.left = null;
+          return root.value;
+        }
+
       }
 
       // tree traversal

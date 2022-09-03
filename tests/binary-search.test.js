@@ -53,6 +53,7 @@ describe('binary-search tree test', () => {
   it('delete method of BST finds and deletes correct value without disrupting the tree', () => {
     const buildTree = newTree.buildTree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
     newTree.root = buildTree;
+    expect(newTree.delete(390393)).toBe("value doesn't exist");
     expect(buildTree.left.left.right.value).toBe(3);
     newTree.delete(3);
     expect(buildTree.left.left.right).toBe(null);
@@ -60,5 +61,7 @@ describe('binary-search tree test', () => {
     expect(newTree.delete(5).value).toBe(7);
     newTree.delete(5);
     expect(buildTree.left.right.value).toBe(7);
+    expect(newTree.delete(8)).toBe(9);
+    expect(buildTree.right.value).toBe(67);
   })
 })
