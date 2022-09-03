@@ -64,4 +64,13 @@ describe('binary-search tree test', () => {
     expect(newTree.delete(8)).toBe(9);
     expect(buildTree.right.value).toBe(67);
   })
+
+  it('find method returns the node on search if it exists, otherwise it returns false', () => {
+    const buildTree = newTree.buildTree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
+    newTree.root = buildTree;
+    expect(newTree.find(1).value).toBe(1);
+    expect(newTree.find(100)).toBe(undefined);
+    expect(newTree.find(3).value).toBe(3);
+    expect(newTree.find(7000)).toBe(undefined);
+  })
 })

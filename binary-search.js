@@ -196,6 +196,31 @@ class Tree {
     }
     return searchStatus;
   }
+  find(value) {
+    const currentRoot = this.root;
+    const searchStatus = searchTree(currentRoot, value);
+
+    function searchTree(root, value) {
+
+      // return status
+      if (root === undefined || root === null) {
+        return;
+      }
+      
+      if (root.value === value) {
+        return root;
+      }
+
+      // tree traversal
+      if (value > root.value) {
+        return searchTree(root.right, value);
+      } 
+      if (value < root.value) {
+        return searchTree(root.left, value);
+      }
+    }
+    return searchStatus
+  }
 }
 
 module.exports = Tree;
