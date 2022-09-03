@@ -63,7 +63,7 @@ describe('binary-search tree test', () => {
     expect(buildTree.left.right.value).toBe(7);
     expect(newTree.delete(8)).toBe(9);
     expect(buildTree.right.value).toBe(67);
-  })
+  });
 
   it('find method returns the node on search if it exists, otherwise it returns false', () => {
     const buildTree = newTree.buildTree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
@@ -72,5 +72,11 @@ describe('binary-search tree test', () => {
     expect(newTree.find(100)).toBe(undefined);
     expect(newTree.find(3).value).toBe(3);
     expect(newTree.find(7000)).toBe(undefined);
+  });
+
+  it('level order method returns an array of the level order of the BST', () => {
+    const buildTree = newTree.buildTree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
+    newTree.root = buildTree;
+    expect(newTree.levelOrder(buildTree)).toStrictEqual([8, 4, 67, 1, 5, 9, 324, 3, 7, 23, 6345]);
   })
 })

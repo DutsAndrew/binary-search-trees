@@ -221,6 +221,25 @@ class Tree {
     }
     return searchStatus
   }
+  levelOrder(root) {
+    const result = [];
+    const que = [];
+
+    // base case
+    if (root === null) return;
+
+    // level order traversal
+    que.push(root);
+
+    while (que.length !== 0) {
+      let current =  que.shift();
+      result.push(current.value);
+
+      if (current.left !== null) que.push(current.left);
+      if (current.right !== null) que.push(current.right);
+    }
+    return result;
+  }
 }
 
 module.exports = Tree;
