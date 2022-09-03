@@ -73,16 +73,6 @@ class Tree {
 
       return rootNode;
     }
-    
-    // function logBST(node) {
-    //   if (node == null)
-    //   {
-    //       return;
-    //   }
-    //   console.log(node.value + " ");
-    //   logBST(node.left);
-    //   logBST(node.right);
-    // }
 
     return rootNode;
   }
@@ -116,12 +106,74 @@ class Tree {
       if (value > root.value) {
         previousRoot = root;
         return searchTree(root.right, value);
-      } else if (value < root.value) {
+      } 
+      if (value < root.value) {
         previousRoot = root;
         return searchTree(root.left, value);
       }
     }
 
+    return searchStatus;
+  }
+  delete(value) {
+    let previousRoot;
+    const currentRoot = this.root;
+    const searchStatus = searchTree(currentRoot, value);
+
+    function searchTree(root, value) {
+
+      // base case
+      if (root === null) {
+        return 'value doesn\'t exist';
+      }
+
+      // delete sequence
+      if (root.value === value) {
+
+        // for when no children are present (delete node)
+        if (root.left === null && root.right === null) {
+
+          if (value < previousRoot.value) {
+            previousRoot.left = null;
+            return previousRoot;
+          }
+  
+          if (value > previousRoot.value) {
+            previousRoot.right = null;
+            return previousRoot;
+          }
+
+        }
+
+        // for when one child is present, child takes place of current node
+        if (root.left === null || root.right === null) {
+
+          if (root.left === null) {
+            previousRoot.right = root.right;
+            return previousRoot.right;
+          }
+
+          if (root.right === null) {
+            previousRoot.left = root.left;
+            return previousRoot.left;
+          }
+          
+        }
+
+        // for when two children are present, find the inorder successor by traversing down the right branch and then continuing down the left branch until the smallest value is found
+        return root;
+      }
+
+      // tree traversal
+      if (value < root.value) {
+        previousRoot = root;
+        return searchTree(root.left, value);
+      }
+      if (value > root.value) {
+        previousRoot = root;
+        return searchTree(root.right, value);
+      }
+    }
     return searchStatus;
   }
 }
