@@ -115,4 +115,10 @@ describe('binary-search tree test', () => {
     newTree.root = buildTree;
     expect(newTree.depth(buildTree)).toBe(4);
   });
+
+  it('isBalanced method returns false if the left/right branches are larger than 1 in comparison to the other', () => {
+    const buildTree = newTree.buildTree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
+    newTree.root = buildTree;
+    expect(newTree.isBalanced(buildTree)).toBe(true);
+  });
 })

@@ -305,7 +305,16 @@ class Tree {
       }
     }
     return depth;
-  } 
+  }
+  isBalanced(node) {
+    if (!node || node === null) return false;
+
+    const leftTree = node.left;
+    const rightTree = node.right;
+
+    if (Math.abs(this.height(leftTree) - this.height(rightTree)) > 1) return false;
+      else return true;
+  }
 }
 
 module.exports = Tree;
