@@ -9,6 +9,7 @@ class Node {
 class Tree {
   constuctor() {
     this.root = null;
+    this.inOrderData = null;
   }
   buildTree(array) {
     const filteredArr = filteredArray(array);
@@ -239,6 +240,23 @@ class Tree {
       if (current.right !== null) que.push(current.right);
     }
     return result;
+  }
+  inOrder(node, results = []) {
+    if (!node) return [];
+    if (node === null) return;
+
+    this.inOrder(node.left, results);
+    results.push(node.value);
+    this.inOrder(node.right, results);
+
+    this.inOrderData = results;
+    return results;
+  }
+  preOrder() {
+
+  }
+  postOrder() {
+    
   }
 }
 

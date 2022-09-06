@@ -78,5 +78,13 @@ describe('binary-search tree test', () => {
     const buildTree = newTree.buildTree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
     newTree.root = buildTree;
     expect(newTree.levelOrder(buildTree)).toStrictEqual([8, 4, 67, 1, 5, 9, 324, 3, 7, 23, 6345]);
+  });
+
+  it('inorder returns BST nodes in order of left, node, right', () => {
+    const buildTree = newTree.buildTree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
+    newTree.root = buildTree;
+    newTree.inOrder(buildTree);
+    expect(newTree.inOrderData).toStrictEqual([1, 3, 4, 5, 7, 8, 9, 23, 67, 324, 6345]);
+    expect(newTree.inOrder(buildTree)).toStrictEqual([1, 3, 4, 5, 7, 8, 9, 23, 67, 324, 6345]);
   })
 })
