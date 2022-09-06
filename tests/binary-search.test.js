@@ -121,4 +121,23 @@ describe('binary-search tree test', () => {
     newTree.root = buildTree;
     expect(newTree.isBalanced(buildTree)).toBe(true);
   });
+
+  // it('rebalance traverses bst in order and creates a new array, it then rebuilds it', () => {
+  //   const buildTree = newTree.buildTree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
+  //   newTree.root = buildTree;
+  //   expect(newTree.reBalance(buildTree)).toEqual({"left": {"left": {"left": null, "right": {"left": null, "right": null, "value": 3}, "value": 1}, "right": {"left": null, "right": {"left": null, "right": null, "value": 7}, "value": 5}, "value": 4}, "right": {"left": {"left": null, "right": {"left": null, "right": null, "value": 23}, "value": 9}, "right": {"left": null, "right": {"left": null, "right": null, "value": 6345}, "value": 324}, "value": 67}, "value": 8});
+  // });
+
+  it('Tree class driver test that runs through and utilizes the above methods together', () => {
+    const buildTree = newTree.buildTree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
+    newTree.root = buildTree;
+    newTree.insert(450);
+    newTree.insert(550);
+    newTree.insert(650);
+    expect(newTree.isBalanced(buildTree)).toBe(false);
+    expect(newTree.inOrder(buildTree)).toStrictEqual([1, 3, 4, 5, 7, 8, 9, 23, 67, 324, 450, 550, 650, 6345]);
+    const reBalancedTree = newTree.reBalance(buildTree);
+    newTree.root = reBalancedTree;
+    expect(newTree.isBalanced(reBalancedTree)).toBe(true);
+  });
 })

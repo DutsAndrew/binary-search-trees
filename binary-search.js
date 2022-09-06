@@ -315,6 +315,31 @@ class Tree {
     if (Math.abs(this.height(leftTree) - this.height(rightTree)) > 1) return false;
       else return true;
   }
+  reBalance(root) {
+    if (!root || root === null) return;
+    const collectedValues = this.inOrder(root);
+    const buildTree = createBST(collectedValues,  0, collectedValues.length - 1);
+    
+    function createBST(array, start, end) {
+      if (start > end) return null;
+
+      const midPoint = parseInt((start + end) / 2);
+      const node = new Node(array[midPoint]);
+
+      let rootNodeSet = false;
+      let rootNode = null;
+
+      if (rootNodeSet === false) {
+        rootNode = node;
+      }
+
+      node.left = createBST(array, start, midPoint - 1);
+      node.right = createBST(array, midPoint + 1, end);
+
+      return rootNode;
+    }
+    return buildTree;
+  }
 }
 
 module.exports = Tree;
