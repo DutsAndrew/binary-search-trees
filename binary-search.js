@@ -17,7 +17,6 @@ class Tree {
     const filteredArr = filteredArray(array);
     const sortedArr = mergeSort(filteredArr);
     const rootNode = createBST(sortedArr, 0, sortedArr.length - 1);
-    // const logOutBSTree = logBST(arrayToBinarySearchTree);
 
     function filteredArray(array) { 
       const removedDuplicates = [];
@@ -105,7 +104,6 @@ class Tree {
         return true;
       }
       
-      // tree traversal
       if (value > root.value) {
         previousRoot = root;
         return searchTree(root.right, value);
@@ -125,7 +123,6 @@ class Tree {
 
     function searchTree(root, value) {
 
-      // base case
       if (root === null) {
         return 'value doesn\'t exist';
       }
@@ -176,8 +173,7 @@ class Tree {
             }
             previousRoot = previousRoot.left;
           }
-
-          // re-attaching branches after deletion
+          
           root = previousRoot;
           root.left = leftBranch;
           root.right = rightBranch;
@@ -187,7 +183,6 @@ class Tree {
 
       }
 
-      // tree traversal
       if (value < root.value) {
         previousRoot = root;
         return searchTree(root.left, value);
@@ -205,7 +200,6 @@ class Tree {
 
     function searchTree(root, value) {
 
-      // return status
       if (root === undefined || root === null) {
         return;
       }
@@ -214,7 +208,6 @@ class Tree {
         return root;
       }
 
-      // tree traversal
       if (value > root.value) {
         return searchTree(root.right, value);
       } 
@@ -228,10 +221,8 @@ class Tree {
     const result = [];
     const que = [];
 
-    // base case
     if (root === null) return;
 
-    // level order traversal
     que.push(root);
 
     while (que.length !== 0) {
@@ -320,6 +311,7 @@ class Tree {
     const collectedValues = this.inOrder(root);
     const buildTree = createBST(collectedValues,  0, collectedValues.length - 1);
     
+    // copied from buildTree(), didn't need the mergeSort() and filterArray()functions
     function createBST(array, start, end) {
       if (start > end) return null;
 
