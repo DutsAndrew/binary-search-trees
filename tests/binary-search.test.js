@@ -102,5 +102,17 @@ describe('binary-search tree test', () => {
     newTree.postOrder(buildTree);
     expect(newTree.postOrderData).toStrictEqual([3,1,7,5,4,23,9,6345,324,67,8]);
     expect(newTree.postOrder(buildTree)).toStrictEqual([3,1,7,5,4,23,9,6345,324,67,8]);
-  })
+  });
+
+  it('height method returns the height of the BST', () => {
+    const buildTree = newTree.buildTree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
+    newTree.root = buildTree;
+    expect(newTree.height(buildTree)).toBe(4);
+  });
+
+  it('depth method returns the height of the BST', () => {
+    const buildTree = newTree.buildTree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
+    newTree.root = buildTree;
+    expect(newTree.depth(buildTree)).toBe(4);
+  });
 })

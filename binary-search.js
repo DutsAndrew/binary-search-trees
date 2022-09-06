@@ -276,6 +276,36 @@ class Tree {
     this.postOrderData = results;
     return results;
   }
+  height(node) {
+    let heightLeft = 0;
+    let heightRight = 0;
+    if (!node) return -1;
+      else {
+        if (node.left !== null) heightLeft = this.height(node.left);
+        if (node.right !== null) heightRight = this.height(node.right);
+
+        if (heightLeft > heightRight) return heightLeft + 1;
+          else return heightRight + 1;
+      }
+  }
+  depth(node) {
+    let depth = 0;
+    let que = [];
+
+    que.push(node, null);
+    while (que.length > 0) {
+      let current = que.shift();
+
+      if (current === null) depth += 1;
+      if (current !== null) {
+        if (current.left) que.push(current.left);
+        if (current.right) que.push(current.right);
+      } else if (que.length > 0) {
+        que.push(null);
+      }
+    }
+    return depth;
+  } 
 }
 
 module.exports = Tree;
