@@ -10,6 +10,7 @@ class Tree {
   constuctor() {
     this.root = null;
     this.inOrderData = null;
+    this.preOrderData = null;
   }
   buildTree(array) {
     const filteredArr = filteredArray(array);
@@ -252,8 +253,16 @@ class Tree {
     this.inOrderData = results;
     return results;
   }
-  preOrder() {
+  preOrder(node, results = []) {
+    if (!node) return [];
+    if (node === null) return;
 
+    results.push(node.value);
+    this.preOrder(node.left, results);
+    this.preOrder(node.right, results);
+
+    this.preOrderData = results;
+    return results;
   }
   postOrder() {
     
